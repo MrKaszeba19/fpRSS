@@ -1,0 +1,5 @@
+fpRSS
+trash/
+*.o
+*.ppu
+.DS_Store
