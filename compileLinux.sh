@@ -1,1 +1,1 @@
-fpc main.pas -o"fprss"
+fpc main.pas -o"fprss" -Fu"macos;ncurses"

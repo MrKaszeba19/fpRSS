@@ -1,13 +1,31 @@
 program fpRSS;
 
-uses UnitRSS,
-     OpenSSL;
+uses UnitRSS
+    {$IFNDEF DARWIN}
+     ,OpenSSL
+    {$ENDIF DARWIN}
+     ,WindowManager
+     //,ncurses
+     ,LibPasNcurses
+     ;
 
 begin
+    {$IFNDEF DARWIN}
     InitSSLInterface;
-    if ParamCount > 0 
-        then if (checkInternet())
-            then writeln(getRequest(ParamStr(1)))
-            else writeln('no internet')
-        else writeln('no rss url provided');
+    {$ENDIF DARWIN}
+    if ParamCount > 0 then 
+    begin
+        if (checkInternet()) then
+        begin
+            initscr;
+            printw(PChar(getRequest(ParamStr(1)))); 
+            refresh;
+            getch;
+            endwin;
+        end else begin
+            writeln('no internet');
+        end;
+    end else begin
+        writeln('no RSS URL provided!');
+    end;
 end.

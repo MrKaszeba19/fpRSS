@@ -3,3 +3,5 @@ trash/
 *.o
 *.ppu
 .DS_Store
+*.res
+*.fpc
