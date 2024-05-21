@@ -10,9 +10,11 @@ uses UnitRSS
      ;
 
 begin
-    {$IFNDEF DARWIN}
-    InitSSLInterface;
-    {$ENDIF DARWIN}
+    //{$IFNDEF DARWIN}
+    //writeln('ok');
+    //InitSSLInterface;
+    //writeln('ok');
+    //{$ENDIF DARWIN}
     if ParamCount > 0 then 
     begin
         if (checkInternet()) then
